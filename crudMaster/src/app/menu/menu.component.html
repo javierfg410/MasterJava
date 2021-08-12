@@ -1,0 +1,34 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">WALLAPET</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto me-auto ">
+          <li class="nav-item" *ngIf="isLogged">
+            <a class="nav-link" routerLink="/list"><i class="fas fa-paw"></i> Mascotas</a>
+          </li>
+          <li class="nav-item"  *ngIf="isLogged">
+            <a class="nav-link" routerLink="/store"><i class="fas fa-plus-circle"></i> Nueva mascota</a>
+          </li>
+          
+        </ul>
+        <ul>
+          <li class="nav-item" *ngIf="!isLogged">
+            <a class="nav-link" routerLink="/login"><i class="fas fa-sign-in-alt"></i> Iniciar Sesión</a>
+          </li>
+          <li class="nav-item" *ngIf="isLogged">
+            <a class="nav-link"  (click)="onLogOut()"><i class="fas fa-door-open"></i> Cerrar Sesión</a>
+          </li>
+        </ul>
+        <!--
+<form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+        -->
+        
+      </div>
+    </div>
+  </nav>

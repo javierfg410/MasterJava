@@ -20,15 +20,21 @@ import { ListSaleComponent } from './sale/list-sale.component';
 import { ShowSaleComponent } from './sale/show-sale.component';
 import { StoreSaleComponent } from './sale/store-sale.component';
 import { UpdateSaleComponent } from './sale/update-sale.component';
+import { interceptorProvider } from './interceptors/prod-interceptor.service';
 
-import {HttpClientModule} from '@angular/common/http';
-import {FormsModule} from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 // external 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 
 import { DatePipe } from '@angular/common';
+import { LoginComponent } from './auth/login.component';
+import { RegisterComponent } from './auth/register.component';
+import { MenuComponent } from './menu/menu.component';
+import { IndexComponent } from './index/index.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,17 +53,24 @@ import { DatePipe } from '@angular/common';
     ListSaleComponent,
     ShowSaleComponent,
     StoreSaleComponent,
-    UpdateSaleComponent
+    UpdateSaleComponent,
+    LoginComponent,
+    RegisterComponent,
+    MenuComponent,
+    IndexComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule, 
+    BrowserAnimationsModule,
     ToastrModule.forRoot(),
     HttpClientModule,
     FormsModule
   ],
-  providers: [DatePipe],
+  providers: [
+    DatePipe,
+    interceptorProvider
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

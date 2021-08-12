@@ -6,7 +6,7 @@ import java.util.Optional;
 import javax.transaction.Transactional;
 
 import com.java.master.models.Sale;
-import com.java.master.models.User;
+import com.java.master.security.entity.User;
 import com.java.master.repository.SaleRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;

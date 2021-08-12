@@ -5,11 +5,11 @@ import java.util.List;
 import com.java.master.dto.Mensaje;
 import com.java.master.dto.SaleDto;
 import com.java.master.models.Sale;
-import com.java.master.models.User;
+import com.java.master.security.entity.User;
 import com.java.master.service.CustomerService;
 import com.java.master.service.PetService;
 import com.java.master.service.SaleService;
-import com.java.master.service.UserService;
+import com.java.master.security.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -50,7 +50,7 @@ public class SaleController {
     }
 
     @GetMapping("/user/{id}")
-    public ResponseEntity<?> findByPetType(@PathVariable("id") Long id) {
+    public ResponseEntity<?> findByPetType(@PathVariable("id") int id) {
         if (!userService.existsById(id))
             return new ResponseEntity<>(new Mensaje("no existe"), HttpStatus.NOT_FOUND);
         User user = userService.getOne(id).get();

@@ -1,5 +1,5 @@
 package com.java.master.models;
-
+import com.java.master.security.entity.User;
 import java.sql.Date;
 
 import javax.persistence.*;

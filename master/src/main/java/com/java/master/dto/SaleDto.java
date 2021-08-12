@@ -4,7 +4,7 @@ import java.sql.Date;
 
 import com.java.master.models.Customer;
 import com.java.master.models.Pet;
-import com.java.master.models.User;
+import com.java.master.security.entity.User;
 
 public class SaleDto {
 

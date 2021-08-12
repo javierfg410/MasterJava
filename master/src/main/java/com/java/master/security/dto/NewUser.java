@@ -1,42 +1,30 @@
-package com.java.master.dto;
+package com.java.master.security.dto;
 
-import javax.validation.constraints.*;
+import java.util.HashSet;
+import java.util.Set;
 
-import com.java.master.models.Role;
+import javax.validation.constraints.NotBlank;
 
-public class UserDto {
-    
-    private Role role;
+public class NewUser {
+
     @NotBlank
     private String name;
     private String lastname;
-    @Min(6)
+    @NotBlank
     private String username;
+    @NotBlank
     private String password;
-    private String phone;
-    public UserDto() {
-    }
-    public UserDto(Role role,String name, String lastname, String username, String password, String phone) {
-        this.role = role;
-        this.name = name;
-        this.lastname = lastname;
-        this.username = username;
-        this.password = password;
-        this.phone = phone;
-    }
-
-    public Role getRole() {
-        return role;
-    }
-    public void setRole(Role role) {
-        this.role = role;
-    }
+    
+    private int phone;
+    private Set<String> roles = new HashSet<>();
+    
     public String getName() {
         return name;
     }
     public void setName(String name) {
         this.name = name;
     }
+    
     public String getLastname() {
         return lastname;
     }
@@ -55,14 +43,19 @@ public class UserDto {
     public void setPassword(String password) {
         this.password = password;
     }
-    public String getPhone() {
+    public int getPhone() {
         return phone;
     }
-    public void setPhone(String phone) {
+    public void setPhone(int phone) {
         this.phone = phone;
     }
-
+    public Set<String> getRoles() {
+        return roles;
+    }
+    public void setRoles(Set<String> roles) {
+        this.roles = roles;
+    }
 
     
-    
+
 }
