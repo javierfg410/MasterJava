@@ -1,7 +1,6 @@
 package com.java.master.service;
 
 import com.java.master.models.Pet;
-import com.java.master.models.PetType;
 
 import java.util.List;
 import java.util.Optional;
@@ -23,12 +22,15 @@ public class PetService {
     PetRepository petRepository;
 
     public List <Pet> list(){
-        return petRepository.findAll();
-    }
-    public List <Pet> findByPetType(PetType petType){
-        return petRepository.findByPetType(petType);
-    }
+        return petRepository.findAllDontSold();
 
+    }
+    public List <Pet> findByPetType(Long id){
+        return petRepository.findByPetType(id);
+    }
+    public List <Pet> getByUserId(int id){
+        return petRepository.getByUserId(id);
+    }
     public Optional <Pet> getOne(Long id){
         return petRepository.findById(id);
     }

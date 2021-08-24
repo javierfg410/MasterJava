@@ -1,1 +1,46 @@
-<p>store-customer works!</p>
+<app-menu></app-menu>
+<div class="container mt 3">
+    <div class="row">
+        <div class="col-md-4 mx-auto-4">
+            <form (ngSubmit)="onCreate()" novalidate #f="ngForm">
+
+                <div class="form-group">
+                    <label for="name">Dni</label>
+                    <input type="text" class="form-control" id="dni" name="dni" [(ngModel)]="dni" required pattern="[0-9]{8}[A-Za-z]{1}">
+                </div>
+                <div class="form-group">
+                    <label for="name">Nombre</label>
+                    <input type="text" class="form-control" id="name" name="name" [(ngModel)]="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="name">Apellidos</label>
+                    <input type="text" class="form-control" id="lastname" name="lastname" [(ngModel)]="lastname"
+                        required>
+                </div>
+                <div class="form-group">
+                    <label for="name">Email</label>
+                    <input type="text" class="form-control" id="email" name="email" [(ngModel)]="email" required email>
+                </div>
+                <div class="form-group">
+                    <label for="cost">Telefono</label>
+                    <input type="number" class="form-control" id="phone" name="phone" [(ngModel)]="phone" required minlength="8">
+                </div>
+                <div class="form-group">
+                    <label for="name">Dirección</label>
+                    <input type="text" class="form-control" id="address" name="address" [(ngModel)]="address" required>
+                </div>
+                <div class="form-group">
+                    <label for="name">País</label>
+                    <input type="text" class="form-control" id="country" name="country" [(ngModel)]="country" required>
+                </div>
+
+
+                <button class="btn btn-outline-success btn-block">
+                    Crear
+                </button>
+
+
+            </form>
+        </div>
+    </div>
+</div>

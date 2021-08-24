@@ -1,1 +1,40 @@
-<p>store-sale works!</p>
+<app-menu></app-menu>
+<div class="container mt 3">
+    <div class="row">
+        <div class="col-md-4 mx-auto-4">
+            <form (ngSubmit)="onCreate()" novalidate #f="ngForm">
+
+                <div class="form-group">
+                    <label for="name">Mascota</label>
+                    <input type="text" class="form-control" id="petName" name="petName" [(ngModel)]="pet.name" required disabled="disabled">
+                </div>
+                <div class="form-group">
+                    <label for="name">Tipo</label>
+                    <input type="text" class="form-control" id="petType" name="petType" [(ngModel)]="pet.petType.name" required disabled="disabled">
+                </div>
+                <div class="form-group">
+                    <label for="name">Precio</label>
+                    <input type="number" class="form-control" id="petCost" name="petCost" [(ngModel)]="pet.cost" required disabled="disabled">
+                </div>
+                <div class="form-group">
+                    <label for="name">Usuario</label>
+                    <input type="text" class="form-control" id="user" name="user" [(ngModel)]="user.name" required disabled="disabled">
+                </div>
+            
+                <div class="form-group">
+                    <label for="customerDni">Cliente</label>
+                    <select class="form-select" aria-label="Default select example" id="customerDni" name="customerDni" [(ngModel)]="customerDni">
+                        <option *ngFor="let customer of customers" value="{{customer.id}}">{{customer.dni}}</option>
+                    </select>
+                    
+                </div>
+
+                <button class="btn btn-outline-success btn-block">
+                    Comprar
+                </button>
+
+
+            </form>
+        </div>
+    </div>
+</div>

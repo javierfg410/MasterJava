@@ -13,7 +13,7 @@ export class CustomerService {
   constructor(private httpClient: HttpClient) { }
 
   public list(): Observable<Customer[]> {
-    return this.httpClient.get<Customer[]>(this.petURL + 'list' );
+    return this.httpClient.get<Customer[]>(this.petURL + 'paginate' );
   }
   public show(id: number): Observable<Customer> {
     return this.httpClient.get<Customer>(this.petURL + `${id}` );

@@ -8,23 +8,26 @@ import { User } from '../models/user';
 })
 export class UserService {
 
-  petURL = 'http://localhost:8080/users/';
+  userURL = 'http://localhost:8080/auth/';
 
   constructor(private httpClient: HttpClient) { }
 
   public list(): Observable<User[]> {
-    return this.httpClient.get<User[]>(this.petURL + 'list' );
+    return this.httpClient.get<User[]>(this.userURL + 'users/paginate' );
   }
   public show(id: number): Observable<User> {
-    return this.httpClient.get<User>(this.petURL + `${id}` );
+    return this.httpClient.get<User>(this.userURL + `users/${id}` );
+  }
+  public findByUsername(username: string): Observable<User> {
+    return this.httpClient.get<User>(this.userURL + `users/username/${username}` );
   }
   public store(user: User): Observable<any>{
-    return this.httpClient.post<any>(this.petURL + 'store', user);
+    return this.httpClient.post<any>(this.userURL + 'new', user);
   }
   public update(id:number, user: User): Observable<any>{
-    return this.httpClient.put<any>(this.petURL + `update/${id}`, user);
+    return this.httpClient.put<any>(this.userURL + `users/update/${id}`, user);
   }
   public delete(id:number): Observable<any>{
-    return this.httpClient.delete<any>(this.petURL + `delete/${id}`);
+    return this.httpClient.delete<any>(this.userURL + `users/delete/${id}`);
   }
 }

@@ -1,0 +1,19 @@
+<app-menu></app-menu>
+<div class="container mt 3">
+    <div class="row">
+        <div class="col-md-4 mx-auto-4">
+            <form (ngSubmit)="onCreate()" novalidate #f="ngForm">
+                <div class="form-group">
+                    <label for="name">Nombre</label>
+                    <input type="text" class="form-control" id="name" name="name" [(ngModel)]="name" required>
+                </div>
+
+                <button class="btn btn-outline-success btn-block">
+                    Crear
+                </button>
+
+
+            </form>
+        </div>
+    </div>
+</div>

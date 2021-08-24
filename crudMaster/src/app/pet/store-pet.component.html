@@ -1,3 +1,4 @@
+<app-menu></app-menu>
 <div class="container mt 3">
     <div class="row">
         <div class="col-md-4 mx-auto-4">
@@ -14,11 +15,18 @@
                     <label for="petTypeId">Tipo</label>
                     <select class="form-select" aria-label="Default select example" id="petTypeId" name="petTypeId" [(ngModel)]="petTypeId">
                         <option *ngFor="let petType of petTypes" value="{{petType.id}}">{{petType.name}}</option>
-                      </select>
+                    </select>
+                    
                 </div>
-                <button class="btn btn-outline-success btn-block">
-                    Crear
-                </button>
+                <div class="form-group">
+                    <p> Añadir tipo de mascota <button class="btn btn-outline-warnieng btn-block" routerLink="/petType/store"><i class="far fa-plus-square"></i></button></p>
+                </div>
+                   
+                    <button class="btn btn-outline-success btn-block">
+                        Crear
+                    </button>
+                
+                
             </form>
         </div>
     </div>

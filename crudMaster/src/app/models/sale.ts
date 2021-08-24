@@ -11,10 +11,10 @@ export class Sale{
     public user: User;
     public customer: Customer;
     public pet: Pet;
-    public day: DatePipe
+    public day: number
 
     
-    constructor(user:User,customer:Customer,pet:Pet, day:DatePipe){
+    constructor(user:User,customer:Customer,pet:Pet, day:number){
         this.user = user;
         this.customer = customer;
         this.pet = pet;

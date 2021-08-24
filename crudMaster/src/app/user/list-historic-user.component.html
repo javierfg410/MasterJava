@@ -1,0 +1,25 @@
+<app-menu></app-menu>
+<table class="table">
+    <thead>
+      <tr>
+
+        <th scope="col">Nombre Mascota</th>
+        <th scope="col">Tipo</th>
+        <th scope="col">Precio</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let pet of pets">
+        <td>{{pet.name}}</td>
+        <td>{{pet.petType.name}}</td>
+        <td>{{pet.cost}} €</td>
+      </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+        <td></td>
+        <td></td>
+        <td>{{total}} €</td>
+      </tr>
+    </tfoot>
+  </table>

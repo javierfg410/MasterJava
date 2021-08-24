@@ -34,6 +34,9 @@ import { LoginComponent } from './auth/login.component';
 import { RegisterComponent } from './auth/register.component';
 import { MenuComponent } from './menu/menu.component';
 import { IndexComponent } from './index/index.component';
+import { StorePetTypeComponent } from './petType/store-pet-type.component';
+import { ListHistoricUserComponent } from './user/list-historic-user.component';
+import { ListPetTypeComponent } from './pet/list-pet-type.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +60,10 @@ import { IndexComponent } from './index/index.component';
     LoginComponent,
     RegisterComponent,
     MenuComponent,
-    IndexComponent
+    IndexComponent,
+    StorePetTypeComponent,
+    ListHistoricUserComponent,
+    ListPetTypeComponent
   ],
   imports: [
     BrowserModule,

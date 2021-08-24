@@ -3,7 +3,7 @@ package com.java.master.controller;
 import com.java.master.dto.Mensaje;
 import com.java.master.dto.PetDto;
 import com.java.master.models.Pet;
-import com.java.master.models.PetType;
+import com.java.master.security.service.UserService;
 import com.java.master.service.PetService;
 import com.java.master.service.PetTypeService;
 
@@ -31,6 +31,8 @@ public class PetController {
     PetService petService;
     @Autowired
     PetTypeService petTypeService;
+    @Autowired
+    UserService userService;
 
     @GetMapping("/paginate")
     public ResponseEntity<List<Pet>> list() {
@@ -45,12 +47,20 @@ public class PetController {
         Pet pet = petService.getOne(id).get();
         return new ResponseEntity<>(pet, HttpStatus.OK);
     }
+
+    @GetMapping("user/{id}")
+    public ResponseEntity<?> getByUserId(@PathVariable("id") int id) {
+        if (!userService.existsById(id))
+            return new ResponseEntity<>(new Mensaje("no existe"), HttpStatus.NOT_FOUND);
+        List<Pet> list = petService.getByUserId(id);
+        return new ResponseEntity<>(list, HttpStatus.OK);
+    }
+
     @GetMapping("/type/{id}")
     public ResponseEntity<?> findByPetType(@PathVariable("id") Long id) {
         if (!petTypeService.existsById(id))
             return new ResponseEntity<>(new Mensaje("no existe"), HttpStatus.NOT_FOUND);
-        PetType petType = petTypeService.getOne(id).get();
-        List<Pet> list = petService.findByPetType(petType);
+        List<Pet> list = petService.findByPetType(id);
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
 

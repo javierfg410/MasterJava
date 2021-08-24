@@ -18,6 +18,12 @@ export class PetService {
   public show(id: number): Observable<Pet> {
     return this.httpClient.get<Pet>(this.petURL + `${id}` );
   }
+  public showType(id: number): Observable<Pet[]> {
+    return this.httpClient.get<Pet[]>(this.petURL + `type/${id}` );
+  }
+  public user(id: number): Observable<Pet[]> {
+    return this.httpClient.get<Pet[]>(this.petURL + `user/${id}` );
+  }
   public type(type: string): Observable<Pet> {
     return this.httpClient.get<Pet>(this.petURL + `type/${type}` );
   }

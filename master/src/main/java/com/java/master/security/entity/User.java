@@ -93,7 +93,7 @@ public class User {
         this.password = password;
     }
 
-    public Number getPhone() {
+    public int getPhone() {
         return phone;
     }
 
