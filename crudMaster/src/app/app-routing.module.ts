@@ -21,6 +21,7 @@ import { StoreSaleComponent } from './sale/store-sale.component';
 
 import { ListCustomerComponent } from './customer/list-customer.component';
 import { StoreCustomerComponent } from './customer/store-customer.component';
+import { UpdateCustomerComponent } from './customer/update-customer.component';
 
 const routes: Routes = [
   {path: '' , component: IndexComponent},
@@ -43,6 +44,7 @@ const routes: Routes = [
 
   {path: 'customer/list', component: ListCustomerComponent},
   {path: 'customer/store', component: StoreCustomerComponent},
+  {path: 'customer/update/:id', component: UpdateCustomerComponent},
 
   {path: 'historic', component: ListHistoricUserComponent},
   

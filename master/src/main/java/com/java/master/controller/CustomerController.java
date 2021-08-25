@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/customers")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://217.61.97.164:4200")
 public class CustomerController {
     @Autowired
     CustomerService customerService;
@@ -68,6 +68,7 @@ public class CustomerController {
             return new ResponseEntity<>(new Mensaje("el nombre es obligatorio"), HttpStatus.BAD_REQUEST);
 
         Customer customer = customerService.getOne(id).get();
+        customer.setDni(customerDto.getDni());
         customer.setName(customerDto.getName());
         customer.setLastname(customerDto.getLastname());
         customer.setAddress(customerDto.getAddress());

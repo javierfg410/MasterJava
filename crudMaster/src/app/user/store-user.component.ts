@@ -48,7 +48,9 @@ export class StoreUserComponent implements OnInit {
 
   onCreate(regForm: NgForm): void {
     if (regForm.valid) {
+      this.username = this.username.toLowerCase();
       const user = new User(this.role, this.name, this.lastname, this.username, this.password, this.phone);
+     
       this.userService.store(user).subscribe(
         data => {
           this.toastr.success('Usuario creada', 'OK', {
@@ -82,10 +84,6 @@ export class StoreUserComponent implements OnInit {
         });
       }
     }
-
-
-
-
   }
 
 }

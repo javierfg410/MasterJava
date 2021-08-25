@@ -1,1 +1,68 @@
-<p>update-customer works!</p>
+<app-menu></app-menu>
+<div class="card">
+    <div class="card-header">
+      <strong>Editar Cliente</strong>
+    </div>
+    <div class="card-body">
+        <form #regForm="ngForm" (ngSubmit)="onUpdate(regForm)" novalidate #f="ngForm">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="name">Dni</label>
+                            <input type="text" class="form-control" id="dni" name="dni" [(ngModel)]="customer.dni" required pattern="[0-9]{8}[A-Za-z]{1}">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="name">Nombre</label>
+                            <input type="text" class="form-control" id="name" name="name" [(ngModel)]="customer.name" required>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="name">Apellidos</label>
+                            <input type="text" class="form-control" id="lastname" name="lastname" [(ngModel)]="customer.lastname"
+                                required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="name">Email</label>
+                            <input type="text" class="form-control" id="email" name="email" [(ngModel)]="customer.email" required email>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="cost">Telefono</label>
+                            <input type="tel" class="form-control"  pattern="[0-9]{9}" id="phone" name="phone" [(ngModel)]="customer.phone" required minlength="8">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="name">Dirección</label>
+                            <input type="text" class="form-control" id="address" name="address" [(ngModel)]="customer.address" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="name">País</label>
+                            <input type="text" class="form-control" id="country" name="country" [(ngModel)]="customer.country" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col">
+                        <button class="btn btn-outline-success btn-block">
+                            Crear
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+  </div>

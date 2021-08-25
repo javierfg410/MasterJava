@@ -1,40 +1,90 @@
 <app-menu></app-menu>
-<div class="container mt 3">
+<div class="card">
+    <div class="card-header">
+      <strong>Compra de mascotas</strong>
+    </div>
+    <div class="card-body">
+        <form  #regForm="ngForm" (ngSubmit)="onCreate(regForm)"  novalidate #f="ngForm">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <p><strong>Datos de la Mascota</strong></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="name">Nombre</label>
+                            <input type="text" class="form-control" id="petName" name="petName" [(ngModel)]="pet.name" required disabled="disabled">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="name">Tipo</label>
+                            <input type="text" class="form-control" id="petType" name="petType" [(ngModel)]="pet.petType.name" required disabled="disabled">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="name">Precio</label>
+                            <input type="number" class="form-control" id="petCost" name="petCost" [(ngModel)]="pet.cost" required disabled="disabled">
+                        </div>
+                    </div>
+                </div>
+                <div class="row  mt-3">
+                    <div class="col">
+                        <p ><strong>Datos del Vendedor</strong></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="name">Usuario</label>
+                            <input type="text" class="form-control" id="user" name="user" [(ngModel)]="user.name" required disabled="disabled">
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3" >
+                    <div class="col">
+                        <p ><strong>Datos del Cliente</strong></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="customerDni">Cliente</label>
+                            <select class="form-select" aria-label="Default select example" id="customerDni" name="customerDni" required [(ngModel)]="customerDni">
+                                <option *ngFor="let customer of customers" value="{{customer.id}}">{{customer.dni}}</option>
+                            </select>
+                            
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group  mt-3">
+                            <p>¿El cliente es nuevo? Pulse aquí <button class="btn btn-outline-warnieng btn-block" routerLink="/customer/store"><i class="far fa-plus-square"></i></button></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            
+        
+            
+            
+            <button class="btn btn-outline-success btn-block">
+                Comprar
+            </button>
+
+
+        </form>
+    </div>
+  </div>
+<div class="container mt-3">
     <div class="row">
         <div class="col-md-4 mx-auto-4">
-            <form (ngSubmit)="onCreate()" novalidate #f="ngForm">
-
-                <div class="form-group">
-                    <label for="name">Mascota</label>
-                    <input type="text" class="form-control" id="petName" name="petName" [(ngModel)]="pet.name" required disabled="disabled">
-                </div>
-                <div class="form-group">
-                    <label for="name">Tipo</label>
-                    <input type="text" class="form-control" id="petType" name="petType" [(ngModel)]="pet.petType.name" required disabled="disabled">
-                </div>
-                <div class="form-group">
-                    <label for="name">Precio</label>
-                    <input type="number" class="form-control" id="petCost" name="petCost" [(ngModel)]="pet.cost" required disabled="disabled">
-                </div>
-                <div class="form-group">
-                    <label for="name">Usuario</label>
-                    <input type="text" class="form-control" id="user" name="user" [(ngModel)]="user.name" required disabled="disabled">
-                </div>
-            
-                <div class="form-group">
-                    <label for="customerDni">Cliente</label>
-                    <select class="form-select" aria-label="Default select example" id="customerDni" name="customerDni" [(ngModel)]="customerDni">
-                        <option *ngFor="let customer of customers" value="{{customer.id}}">{{customer.dni}}</option>
-                    </select>
-                    
-                </div>
-
-                <button class="btn btn-outline-success btn-block">
-                    Comprar
-                </button>
-
-
-            </form>
+           
         </div>
     </div>
 </div>

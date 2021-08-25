@@ -1,33 +1,52 @@
 <app-menu></app-menu>
-<div class="container mt 3">
-    <div class="row">
-        <div class="col-md-4 mx-auto-4">
-            <form (ngSubmit)="onCreate()" novalidate #f="ngForm">
-                <div class="form-group">
-                    <label for="name">Nombre</label>
-                    <input type="text" class="form-control" id="name" name="name" [(ngModel)]="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="cost">Precio</label>
-                    <input type="number" class="form-control" id="cost" name="cost" [(ngModel)]="cost" required>
-                </div>
-                <div class="form-group">
-                    <label for="petTypeId">Tipo</label>
-                    <select class="form-select" aria-label="Default select example" id="petTypeId" name="petTypeId" [(ngModel)]="petTypeId">
-                        <option *ngFor="let petType of petTypes" value="{{petType.id}}">{{petType.name}}</option>
-                    </select>
-                    
-                </div>
-                <div class="form-group">
-                    <p> Añadir tipo de mascota <button class="btn btn-outline-warnieng btn-block" routerLink="/petType/store"><i class="far fa-plus-square"></i></button></p>
-                </div>
-                   
-                    <button class="btn btn-outline-success btn-block">
-                        Crear
-                    </button>
-                
-                
-            </form>
-        </div>
+<div class="card">
+    <div class="card-header">
+        <strong>
+            Añadir Mascota
+        </strong>
+     
     </div>
-</div>
+    <div class="card-body">
+        <form #regForm="ngForm" (ngSubmit)="onCreate(regForm)" novalidate #f="ngForm">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="name">Nombre</label>
+                            <input type="text" class="form-control" id="name" name="name" [(ngModel)]="name" required>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="cost">Precio</label>
+                            <input type="number" class="form-control" id="cost" name="cost" [(ngModel)]="cost" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="petTypeId">Tipo</label>
+                            <select class="form-select" aria-label="Default select example" id="petTypeId" name="petTypeId" [(ngModel)]="petTypeId">
+                                <option *ngFor="let petType of petTypes" value="{{petType.id}}">{{petType.name}}</option>
+                            </select>
+                            
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group mt-3">
+                            <p> Añadir tipo de mascota <button class="btn btn-outline-warnieng btn-block" routerLink="/petType/store"><i class="far fa-plus-square"></i></button></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col">
+                        <button class="btn btn-outline-success btn-block">
+                            Crear
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+  </div>

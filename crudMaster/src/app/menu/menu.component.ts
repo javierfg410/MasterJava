@@ -30,9 +30,10 @@ export class MenuComponent implements OnInit {
     }
   }
   onLogOut():void {
+    
+    this.router.navigate(['/login']);
     this.tokenService.logOut();
-    this.router.navigate(['/']);
-    window.location.reload();
+    
   }
 
 }

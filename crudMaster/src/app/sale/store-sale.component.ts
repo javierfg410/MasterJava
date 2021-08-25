@@ -1,5 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { AbstractControl, FormGroup, NgForm, ValidationErrors } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Customer } from '../models/customer';
@@ -84,30 +85,75 @@ export class StoreSaleComponent implements OnInit {
       }
     );
   }
-  onCreate(): void {
-    this.customerService.show(this.customerDni).subscribe(
-      data => {
-        const sale = new Sale(this.user,data,this.pet,this.day);
-        this.saleService.store(sale).subscribe(
-          data => {
-            this.toastr.success('Cliente creada', 'OK', {
-              timeOut: 3000
-            });
-            this.router.navigate(['/']);
-          },
-          err => {
-            this.toastr.error(err.error.mensaje, 'Fail', {
-              timeOut: 3000
-            });
-            this.router.navigate(['/']);
-          }
-        );
-      },
-      err => {
-        console.log(err);
-      }
-    );
+  onCreate(regForm: NgForm): void {
+    console.log(this.customerDni);
+    if (this.customerDni != 0) {
+      this.customerService.show(this.customerDni).subscribe(
+        data => {
+          const sale = new Sale(this.user,data,this.pet,this.day);
+          this.saleService.store(sale).subscribe(
+            data => {
+              this.toastr.success('Cliente creada', 'OK', {
+                timeOut: 3000
+              });
+              this.router.navigate(['/']);
+            },
+            err => {
+              this.toastr.error(err.error.mensaje, 'Fail', {
+                timeOut: 3000
+              });
+              this.router.navigate(['/']);
+            }
+          );
+        },
+        err => {
+          console.log(err);
+        }
+      );
+    }else{
+      const error: AllValidationErrors = getFormValidationErrors(regForm.controls).shift();
+
+        let text;
+         text = 'No has seleccionado un cliente'; 
+
+        this.toastr.error(text, 'Error de validación', {
+          timeOut: 5000
+        });
+      
+    }
+
+    
     //user:User,customer:Customer,pet:Pet, day:DatePipe
    
   }
+}
+
+export interface AllValidationErrors {
+  control_name: string;
+  error_name: string;
+  error_value: any;
+}
+export interface FormGroupControls {
+  [key: string]: AbstractControl;
+}
+
+export function getFormValidationErrors(controls: FormGroupControls): AllValidationErrors[] {
+  let errors: AllValidationErrors[] = [];
+  Object.keys(controls).forEach(key => {
+    const control = controls[ key ];
+    if (control instanceof FormGroup) {
+      errors = errors.concat(getFormValidationErrors(control.controls));
+    }
+    const controlErrors: ValidationErrors = controls[ key ].errors;
+    if (controlErrors !== null) {
+      Object.keys(controlErrors).forEach(keyError => {
+        errors.push({
+          control_name: key,
+          error_name: keyError,
+          error_value: controlErrors[ keyError ]
+        });
+      });
+    }
+  });
+  return errors;
 }

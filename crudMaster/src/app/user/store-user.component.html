@@ -1,43 +1,65 @@
 <app-menu></app-menu>
-<div class="container mt 3">
-    <div class="row">
-        <div class="col-md-4 mx-auto-4">
-            <form #regForm="ngForm" (ngSubmit)="onCreate(regForm)" novalidate #f="ngForm">
-
-                <div class="form-group">
-                    <input type="hidden" class="form-control" id="role" name="role" [(ngModel)]="role" value="">
-                    
-                </div>
-                <div class="form-group">
-                    <label for="name">Nombre</label>
-                    <input type="text" class="form-control" id="name" name="name" [(ngModel)]="name" required
-                    >
-                </div>
-                <div class="form-group">
-                    <label for="name">Apellidos</label>
-                    <input type="text" class="form-control" id="lastname" name="lastname" [(ngModel)]="lastname" required>
-                </div>
-                <div class="form-group">
-                    <label for="name">Nombre de usuario</label>
-                    <input type="text" class="form-control" id="username" name="username" [(ngModel)]="username" required
-                    onkeyup="javascript:this.value=this.value.toLowerCase();" maxlength="6">
-                </div>
-                <div class="form-group">
-                    <label for="name">Contraseña</label>
-                    <input type="password" class="form-control" id="password" name="password" [(ngModel)]="password" required
-                    pattern="^[a-zA-Z0-9]+$"
-                    minlength="6" maxlength="12" >
-                </div>
-                <div class="form-group">
-                    <label for="name">Telefono</label>
-                    <input type="number" class="form-control" id="phone" name="phone" [(ngModel)]="phone" required minlength="8">
-                </div>
-                <button class="btn btn-outline-success btn-block">
-                    Crear
-                </button>
-
-
-            </form>
-        </div>
+<div class="card">
+    <div class="card-header">
+      Añadir usuario
     </div>
-</div>
+    <div class="card-body">
+
+        <form #regForm="ngForm" (ngSubmit)="onCreate(regForm)" novalidate #f="ngForm">
+            <div class="form-group">
+                <input type="hidden" class="form-control" id="role" name="role" [(ngModel)]="role" value="">
+                
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="name">Nombre</label>
+                            <input type="text" class="form-control" id="name" name="name" [(ngModel)]="name" required
+                            >
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="name">Apellidos</label>
+                            <input type="text" class="form-control" id="lastname" name="lastname" [(ngModel)]="lastname" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="name">Nombre de usuario</label>
+                            <input type="text" class="form-control" id="username" name="username" [(ngModel)]="username" required
+                            onkeyup="javascript:this.value=this.value.toLowerCase();" maxlength="6">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="name">Contraseña</label>
+                            <input type="password" class="form-control" id="password" name="password" [(ngModel)]="password" required
+                            pattern="^[a-zA-Z0-9]+$"
+                            minlength="6" maxlength="12" >
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="name">Telefono</label>
+                            <input type="tel" class="form-control"  pattern="[0-9]{9}" id="phone" name="phone" [(ngModel)]="phone" required minlength="8">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <button class="btn btn-outline-success btn-block">
+                            Crear
+                        </button>
+                    </div>
+                </div>
+            </div>
+           
+        </form>
+    </div>
+  </div>

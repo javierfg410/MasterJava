@@ -1,18 +1,29 @@
 <app-menu></app-menu>
-<div class="container mt 3">
-    <div class="row">
-        <div class="col-md-4 mx-auto-4">
-            <form (ngSubmit)="onUpdate()" novalidate #f="ngForm">
-                <div class="form-group">
-                    <label for="name">Nombre</label>
-                    <input type="text" class="form-control" id="name" name="name" [(ngModel)]="pet.name" required>
+<div class="card">
+    <div class="card-header">
+        <strong>
+            Editar {{pet.name}}
+        </strong>
+    </div>
+    <div class="card-body">
+        <form #regForm="ngForm" (ngSubmit)="onUpdate(regForm)" novalidate #f="ngForm">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="name">Nombre</label>
+                        <input type="text" class="form-control" id="name" name="name" [(ngModel)]="pet.name" required>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="cost">Precio</label>
-                    <input type="number" class="form-control" id="cost" name="cost" [(ngModel)]="pet.cost" required>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="cost">Precio</label>
+                        <input type="number" class="form-control" id="cost" name="cost" [(ngModel)]="pet.cost" required>
+                    </div>
                 </div>
-                <div class="form-group">
-                    
+            </div>
+            <div class="row">
+                <div class="col">
                     <label for="petTypeId">Tipo</label>
                     <select class="form-select select" aria-label="Default select example" id="petTypeId" name="petTypeId"
                         [(ngModel)]="petTypeId" >
@@ -21,10 +32,21 @@
                         >{{petType.name}}</option>
                     </select>
                 </div>
-                <button class="btn btn-outline-success btn-block">
-                    Crear
-                </button>
-            </form>
+                <div class="col">
+                    <div class="form-group mt-3">
+                        <p> Añadir tipo de mascota <button class="btn btn-outline-warnieng btn-block" routerLink="/petType/store"><i class="far fa-plus-square"></i></button></p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <button class="btn btn-outline-success btn-block">
+                        Actualizar
+                    </button>
+               
+                </div>
+            </div>
         </div>
+        </form>
     </div>
-</div>
+  </div>
