@@ -1,6 +1,6 @@
 /*
 COMENTAR UNA VEZ USADO LA PRIMERA VEZ
-*/
+
 package com.java.master.util;
 
 import com.java.master.security.entity.User;
@@ -30,3 +30,4 @@ public class CreateAdmin implements CommandLineRunner{
     
 }
 }
+*/
