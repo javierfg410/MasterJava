@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormGroup, NgForm, ValidationErrors } from '@angular/forms';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AbstractControl, FormControl, FormGroup, NgForm, ValidationErrors,ControlValueAccessor } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Customer } from '../models/customer';
@@ -12,6 +12,10 @@ import { PetService } from '../service/pet.service';
 import { SaleService } from '../service/sale.service';
 import { TokenService } from '../service/token.service';
 import { UserService } from '../service/user.service';
+import { takeUntil } from 'rxjs/operators'
+import { MatSelect } from '@angular/material/select';
+import { Subject } from 'rxjs';
+import { Input } from '@angular/core';
 
 @Component({
   selector: 'app-store-sale',
@@ -20,6 +24,7 @@ import { UserService } from '../service/user.service';
 })
 export class StoreSaleComponent implements OnInit {
 
+
   customers : Customer[] = [];
 
   public user: User = null;
@@ -27,6 +32,10 @@ export class StoreSaleComponent implements OnInit {
   public pet: Pet= null;
   public day: number = Date.now();
   public customerDni: number = 0;
+
+  public customerCtrl: FormControl = new FormControl();
+  public customerFiltered: Customer[] = [];
+  public customerFilterCtrl: FormControl = new FormControl();
 
   constructor(
     
@@ -42,10 +51,23 @@ export class StoreSaleComponent implements OnInit {
 
   ) { }
 
+  @ViewChild('singleSelect', { static: true }) singleSelect: MatSelect;
+
+  protected _onDestroy = new Subject<void>();
+
   ngOnInit(): void {
     this.chargeCustomers();
     this.showPet();
     this.showUser();
+
+    
+    this.customerCtrl.setValue(this.customers[10]);
+
+    this.customerFilterCtrl.valueChanges
+      .pipe(takeUntil(this._onDestroy))
+      .subscribe(() => {
+        this.customerFilter();
+      });
 
   }
   chargeCustomers(): void{
@@ -84,6 +106,22 @@ export class StoreSaleComponent implements OnInit {
         this.router.navigate(['/']);
       }
     );
+  }
+  protected customerFilter() {
+    if (!this.customers) {
+      return;
+    }
+    // get the search keyword
+    let search = this.customerFilterCtrl.value;
+    if (!search) {
+      this.customerFiltered = this.customers;
+      return;
+    } else {
+      search = search.toLowerCase();
+    }
+    // filter the banks
+    this.customerFiltered = this.customers.filter(customer => customer.dni.toLowerCase().indexOf(search) > -1);
+ 
   }
   onCreate(regForm: NgForm): void {
     console.log(this.customerDni);
@@ -136,6 +174,7 @@ export interface AllValidationErrors {
 export interface FormGroupControls {
   [key: string]: AbstractControl;
 }
+
 
 export function getFormValidationErrors(controls: FormGroupControls): AllValidationErrors[] {
   let errors: AllValidationErrors[] = [];

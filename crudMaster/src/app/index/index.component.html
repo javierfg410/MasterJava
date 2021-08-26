@@ -2,9 +2,11 @@
  <div class="container text-center">
      <div *ngIf="isLogged; else loggedOut"> 
         <h2>Bienvenido {{username}}</h2>
+        <img src="https://scontent-mad1-1.xx.fbcdn.net/v/t1.6435-9/52441737_538848883273779_8791250476646531072_n.jpg?_nc_cat=105&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=_uFw5AD3THEAX9KRX3b&_nc_ht=scontent-mad1-1.xx&oh=c2882f29d3ca291de5297b9578b46b2c&oe=614C4B02" alt="">
     </div>
         <ng-template #loggedOut>
            <h2>No has iniciado sesion</h2> 
+           
         </ng-template>
     
  </div>

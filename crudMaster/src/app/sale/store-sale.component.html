@@ -53,9 +53,17 @@
                     <div class="col">
                         <div class="form-group">
                             <label for="customerDni">Cliente</label>
-                            <select class="form-select" aria-label="Default select example" id="customerDni" name="customerDni" required [(ngModel)]="customerDni">
-                                <option *ngFor="let customer of customers" value="{{customer.id}}">{{customer.dni}}</option>
-                            </select>
+                            <mat-form-field>
+                                <mat-select [formControl]="customerCtrl"  #singleSelect>
+                                  <mat-option>
+                                    <ngx-mat-select-search  placeholderLabel = 'Buscar'  noEntriesFoundLabel = 'Cliente no encontrado' ngModel [formControl]="customerFilterCtrl" >
+                                    </ngx-mat-select-search>
+                                  </mat-option>
+                                  <mat-option *ngFor="let customer of customerFiltered" [value]="customer.id">{{customer.dni}}
+                                  </mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                         
                             
                         </div>
                     </div>

@@ -20,10 +20,13 @@ import { ListSaleComponent } from './sale/list-sale.component';
 import { ShowSaleComponent } from './sale/show-sale.component';
 import { StoreSaleComponent } from './sale/store-sale.component';
 import { UpdateSaleComponent } from './sale/update-sale.component';
+import { StorePetTypeComponent } from './petType/store-pet-type.component';
+import { ListHistoricUserComponent } from './user/list-historic-user.component';
+import { ListPetTypeComponent } from './pet/list-pet-type.component';
 import { interceptorProvider } from './interceptors/prod-interceptor.service';
 
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // external 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -34,9 +37,10 @@ import { LoginComponent } from './auth/login.component';
 import { RegisterComponent } from './auth/register.component';
 import { MenuComponent } from './menu/menu.component';
 import { IndexComponent } from './index/index.component';
-import { StorePetTypeComponent } from './petType/store-pet-type.component';
-import { ListHistoricUserComponent } from './user/list-historic-user.component';
-import { ListPetTypeComponent } from './pet/list-pet-type.component';
+
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {  MatSelectModule } from '@angular/material/select';
+import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 
 @NgModule({
   declarations: [
@@ -71,7 +75,12 @@ import { ListPetTypeComponent } from './pet/list-pet-type.component';
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    NgxMatSelectSearchModule
   ],
   providers: [
     DatePipe,
