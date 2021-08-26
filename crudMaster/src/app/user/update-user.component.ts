@@ -50,7 +50,7 @@ export class UpdateUserComponent implements OnInit {
         this.toastr.success('Mascota actualizada', 'OK', {
           timeOut: 3000
         });
-        this.router.navigate(['/']);
+        this.router.navigate(['/user/list']);
       },
       err => {
         console.log('no se envia');

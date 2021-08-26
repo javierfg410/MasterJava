@@ -56,21 +56,31 @@ export class UpdatePetComponent implements OnInit {
   }
   onUpdate(regForm: NgForm): void {
     if (regForm.valid && this.pet.petType != null && this.pet.cost > 0) {
-      const id = this.activateRoute.snapshot.params.id;
-      this.petSercive.update(id, this.pet).subscribe(
+      this.petTypeService.show(this.petTypeId).subscribe(
         data => {
-          this.toastr.success('Mascota actualizada', 'OK', {
-            timeOut: 3000
-          });
-          this.router.navigate(['/']);
+          this.pet.petType = data;
+          const id = this.activateRoute.snapshot.params.id;
+
+          this.petSercive.update(id, this.pet).subscribe(
+            data => {
+              this.toastr.success('Mascota actualizada', 'OK', {
+                timeOut: 3000
+              });
+              this.router.navigate(['/list']);
+            },
+            err => {
+              this.toastr.error(err.error.mensaje, 'Fail', {
+                timeOut: 3000, positionClass: 'toast-top-center',
+              });
+              this.router.navigate(['/']);
+            }
+          );
         },
         err => {
-          this.toastr.error(err.error.mensaje, 'Fail', {
-            timeOut: 3000, positionClass: 'toast-top-center',
-          });
-          this.router.navigate(['/']);
+          console.log(err);
         }
       );
+
     } else {
       const error: AllValidationErrors = getFormValidationErrors(regForm.controls).shift();
       console.log(error);

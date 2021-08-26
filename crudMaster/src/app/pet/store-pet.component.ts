@@ -53,7 +53,7 @@ export class StorePetComponent implements OnInit {
               this.toastr.success('Mascota creada', 'OK', {
                 timeOut: 3000
               });
-              this.router.navigate(['/']);
+              this.router.navigate(['/list']);
             },
             err => {
               this.toastr.error(err.error.mensaje, 'Fail', {

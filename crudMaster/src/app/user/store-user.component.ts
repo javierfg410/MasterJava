@@ -56,7 +56,7 @@ export class StoreUserComponent implements OnInit {
           this.toastr.success('Usuario creada', 'OK', {
             timeOut: 3000
           });
-          this.router.navigate(['/']);
+          this.router.navigate(['/user/list']);
         },
         err => {
           this.toastr.error(err.error.mensaje, 'Fail', {
