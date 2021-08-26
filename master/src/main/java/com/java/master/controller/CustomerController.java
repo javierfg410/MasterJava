@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/customers")
-@CrossOrigin(origins = "http://217.61.97.164:4200")
+@CrossOrigin(origins = "http://localhost:4200")
 public class CustomerController {
     @Autowired
     CustomerService customerService;

@@ -8,7 +8,7 @@ import { User } from '../models/user';
 })
 export class UserService {
 
-  userURL = 'http://217.61.97.164:8080/auth/';
+  userURL = 'http://localhost:8080/auth/';
 
   constructor(private httpClient: HttpClient) { }
 
