@@ -17,7 +17,7 @@ public class UserService {
     UserRepository userRepository;
 
     public List <User> list(){
-        return userRepository.findAll();
+        return userRepository.findAllDontAdmin();
     }
 
     public Optional <User> getOne(int id){
