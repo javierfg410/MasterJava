@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Pet } from '../models/pet';
 import { PetService } from '../service/pet.service';
+import { TokenService } from '../service/token.service';
 
 @Component({
   selector: 'app-list-pet',
@@ -12,14 +13,25 @@ import { PetService } from '../service/pet.service';
 export class ListPetComponent implements OnInit {
 
   pets : Pet[] = [];
+  isAdmin = false;
+  public roles: string[] = [];
+
   constructor(
     private petService: PetService,
     private router: Router,
+    private tokenService: TokenService,
     private toastr: ToastrService,
     ) { }
 
   ngOnInit() {
     this.chargePets();
+
+    if(this.tokenService.getToken()){
+      this.roles = this.tokenService.getAuthorities();
+      if(this.roles.includes('ROLE_ADMIN')){
+        this.isAdmin = true;
+      }
+    }
   }
 
   chargePets(): void{

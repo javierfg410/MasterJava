@@ -27,7 +27,7 @@
               </button>
               <ul class="dropdown-menu" aria-labelledby="user">
                 <li><a class="dropdown-item" routerLink="/list">Listar</a></li>
-                <li><a class="dropdown-item"  routerLink="/store">Nuevo mascota</a></li>
+                <li><a class="dropdown-item" *ngIf="isAdmin"  routerLink="/store">Nuevo mascota</a></li>
               </ul>
             </div>
           </li>

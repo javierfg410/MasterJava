@@ -60,9 +60,6 @@ export class StoreSaleComponent implements OnInit {
     this.showPet();
     this.showUser();
 
-    
-    this.customerCtrl.setValue(this.customers[10]);
-
     this.customerFilterCtrl.valueChanges
       .pipe(takeUntil(this._onDestroy))
       .subscribe(() => {
@@ -124,14 +121,13 @@ export class StoreSaleComponent implements OnInit {
  
   }
   onCreate(regForm: NgForm): void {
-    console.log(this.customerDni);
-    if (this.customerDni != 0) {
-      this.customerService.show(this.customerDni).subscribe(
+    if (this.customerCtrl.value != 0) {
+      this.customerService.show(this.customerCtrl.value).subscribe(
         data => {
           const sale = new Sale(this.user,data,this.pet,this.day);
           this.saleService.store(sale).subscribe(
             data => {
-              this.toastr.success('Cliente creada', 'OK', {
+              this.toastr.success('Venta realizada correctamente', 'OK', {
                 timeOut: 3000
               });
               this.router.navigate(['/']);

@@ -47,7 +47,7 @@ export class UpdateUserComponent implements OnInit {
     this.userService.update(id, this.user).subscribe(
       data => {
         console.log('se envia');
-        this.toastr.success('Mascota actualizada', 'OK', {
+        this.toastr.success('Usuario actualizado', 'OK', {
           timeOut: 3000
         });
         this.router.navigate(['/user/list']);
