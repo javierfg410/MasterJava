@@ -12,6 +12,8 @@ Se puede acceder a una demo de la aplicacion a traves del siguiente <a href="htt
     Mysql 8.0.24
     Maven 4
     Angular 12
+    node.js
+    
 <h1>Enunciado</h1>
 <p>
 Se desea realizar una aplicación web que se encargue de realizar la gestión de venta de mascotas. El acceso a dicha aplicación podrá ser realizada por un único administrador y por una serie de usuarios.
@@ -79,7 +81,7 @@ diseño de la base de datos. Para posibles versiones futuras mantener la aplicac
 
 <h2>Descargar/instalar las dependencias</h2>
 <h3>Back-End</h3>
-<p>Crear una base de datos con el nombre de "master"</p>
+<p>Crear una base de datos con el nombre de "master" y crear un usuario de la base de datos en "\src\main\resources\application.properties"</p>
 <p>Dirigirse al directorio master</p>
 <p>Si es la primera instalacion es necesario asegurarse que los archivos \src\main\java\com\java\master\util\CreateAdmin.java y \src\main\java\com\java\master\util\CreateRoles.java estan descomentados</p>
 <p>Teniendo descargado Java y maven se puede compilar utilizando dos comandos</p>
